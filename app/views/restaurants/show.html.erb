@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%= notice %></p>-->
 
 <p>
   <strong>Name:</strong>
@@ -28,7 +28,7 @@
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Back', restaurants_path %>
 
-<%= @restaurant.id %>
+
 
 <table class="table table-hover">
   <thead>
@@ -42,11 +42,11 @@
   <% Submenu.where(restaurantId:@restaurant.id).find_each do |submenu| %>
     <tr>
       <td><%=submenu.name%></td>
-
+      <td><%= link_to 'Delete', submenu, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
 
   <% end %>
 
   </tbody>
 </table>
-<%= link_to '+ Add New', :controller => :submenus, :action => :new %>
+<%= link_to '+ Add New', new_submenu_path(:restaurant => @restaurant.name, :restaurantId => @restaurant.id) %>

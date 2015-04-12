@@ -15,6 +15,8 @@ class SubmenusController < ApplicationController
   # GET /submenus/new
   def new
     @submenu = Submenu.new
+    @submenu.restaurant = params[:restaurant]
+    @submenu.restaurantId = params[:restaurantId]
   end
 
   # GET /submenus/1/edit
@@ -28,7 +30,7 @@ class SubmenusController < ApplicationController
 
     respond_to do |format|
       if @submenu.save
-        format.html { redirect_to @submenu, notice: 'Submenu was successfully created.' }
+        format.html { redirect_to restaurant_path(:id => @submenu.restaurantId), notice: 'Submenu was successfully created.' }
         format.json { render :show, status: :created, location: @submenu }
       else
         format.html { render :new }
@@ -54,9 +56,10 @@ class SubmenusController < ApplicationController
   # DELETE /submenus/1
   # DELETE /submenus/1.json
   def destroy
+    @restaurantId = @submenu.restaurantId
     @submenu.destroy
     respond_to do |format|
-      format.html { redirect_to submenus_url, notice: 'Submenu was successfully destroyed.' }
+      format.html { redirect_to restaurant_path(:id => @restaurantId), notice: 'Submenu was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
