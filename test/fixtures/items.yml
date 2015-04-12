@@ -2,12 +2,12 @@
 
 one:
   name: MyString
-  price: 1
+  price: 9.99
   submenuId: 1
   restaurantId: 1
 
 two:
   name: MyString
-  price: 1
+  price: 9.99
   submenuId: 1
   restaurantId: 1
