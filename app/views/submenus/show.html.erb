@@ -10,10 +10,28 @@
   <%= @submenu.restaurant %>
 </p>
 
-<p>
-  <strong>Restaurantid:</strong>
-  <%= @submenu.restaurantId %>
-</p>
-
 <%= link_to 'Edit', edit_submenu_path(@submenu) %> |
 <%= link_to 'Back', submenus_path %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+
+  <% Item.where(submenuId:@submenu.id).find_each do |item| %>
+    <tr>
+      <td><%=item.name%></td>
+      <td><%=item.price%>
+      <td><%= link_to 'Delete', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+
+  <% end %>
+
+  </tbody>
+</table>
+<%= link_to '+ Add New', new_item_path(:submenuId => @submenu.id, :restaurantId => @submenu.restaurantId) %>

@@ -42,6 +42,7 @@
   <% Submenu.where(restaurantId:@restaurant.id).find_each do |submenu| %>
     <tr>
       <td><%=submenu.name%></td>
+      <td><%= link_to 'show', submenu %></td>
       <td><%= link_to 'Delete', submenu, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
 
