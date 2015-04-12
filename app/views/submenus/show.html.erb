@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @submenu.name %>
+</p>
+
+<p>
+  <strong>Restaurant:</strong>
+  <%= @submenu.restaurant %>
+</p>
+
+<p>
+  <strong>Restaurantid:</strong>
+  <%= @submenu.restaurantId %>
+</p>
+
+<%= link_to 'Edit', edit_submenu_path(@submenu) %> |
+<%= link_to 'Back', submenus_path %>

@@ -6,9 +6,66 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <Title>Order Out</Title>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
 
-<%= yield %>
+           	
+              <% if current_user.try(:admin?) %>
+                
+              <% end %>
+            
+            <li><%= link_to "Home", :controller => :home, :action => :index %></li> 
+            <li><%= link_to "Restaurant", :controller => :restaurants, :action => :index %></li>  
+             
+             
+            </ul>
+            <ul class="nav pull-right">
+			  
+			  <% if user_signed_in? %>
+			    <li id="fat-menu" class="dropdown">
+			      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+			        Account <b class="caret"></b>
+			      </a>
+			      <ul class="dropdown-menu">
+              <li><%= link_to "Profile", "http://localhost:3000/users/edit" %></li>
+              
+              <li class="divider"></li>
+              <li>
+                <%= link_to "Logout", "http://localhost:3000/users/sign_out", :method => :delete %>
+              </li>
+            </ul>
+			    </li>
+			  <% else %>
+			    <li><%= link_to "Sign in", new_user_session_path %></li>
+			  <% end %>
+			</ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
 
-</body>
+
+<div style="padding: 0% 10% 10% 10%">
+	<body>
+		<% if notice != nil %>
+			<p class="notice"><%= notice %></p>
+		<% end %>
+		<% if alert != nil %>
+			<p class="alert"><%= alert %></p>
+		<% end %>
+
+	<%= yield %>
+
+	</body>
+</div>
 </html>
