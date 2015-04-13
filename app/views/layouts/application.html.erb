@@ -20,14 +20,12 @@
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
 
-           	
-              <% if current_user.try(:admin?) %>
-                
-              <% end %>
             
             
             <li><%= link_to "Home", "http://localhost:3000/home/index" %></li>
-            <li><%= link_to "Restaurant", "http://localhost:3000/restaurants" %></li>  
+            <% if current_user.try(:admin?) %>
+            	<li><%= link_to "Restaurant", "http://localhost:3000/restaurants" %></li>  
+            <% end %>
              
              
             </ul>
@@ -69,4 +67,5 @@
 
 	</body>
 </div>
+
 </html>
