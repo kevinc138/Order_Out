@@ -2,7 +2,7 @@
 
 <h1>Listing Restaurants</h1>
 
-<table>
+<table class = "table table-hover">
   <thead>
     <tr>
       <th>Name</th>
@@ -22,9 +22,9 @@
         <td><%= restaurant.visible %></td>
         <td><%= restaurant.description %></td>
         <td><%= restaurant.logo %></td>
-        <td><%= link_to 'Show', restaurant %></td>
-        <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
-        <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', restaurant, :class => "btn btn-default btn-sm" %></td>
+        <td><%= link_to 'Edit', edit_restaurant_path(restaurant), :class => "btn btn-default btn-sm" %></td>
+        <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-default btn-sm" %></td>
       </tr>
     <% end %>
   </tbody>
