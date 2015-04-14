@@ -25,8 +25,11 @@
   <%= @restaurant.logo %>
 </p>
 
-<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
-<%= link_to 'Back', restaurants_path %>
+
+<% if current_user.try(:restaurantid) == @restaurant.id %>
+  <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+  <%= link_to 'Back', restaurants_path %>
+<% end %>
 
 
 
