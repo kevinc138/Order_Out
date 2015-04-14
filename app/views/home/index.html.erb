@@ -32,11 +32,13 @@
 <% else %>
 
 	<h3>Welcome, <%= @restaurants.find(current_user.try(:restaurantid)).name %></h3>
+	<br>
+	<br>
 	<div class="form-group">
 		<%= link_to 'Restaurant Details', @restaurants.find(current_user.try(:restaurantid)),  :class => "btn btn-default btn-sm"%>
 	</div>
 	<div class="form-group">
-		<%= link_to 'Edit Restaurant', edit_restaurant_path(@restaurants.find(current_user.try(:restaurantid?))), :class => "btn btn-default btn-sm" %>
+		<%= link_to 'Edit Restaurant', edit_restaurant_path(@restaurants.find(current_user.try(:restaurantid))), :class => "btn btn-default btn-sm" %>
 	</div>
 	<div>
 

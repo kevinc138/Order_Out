@@ -29,7 +29,10 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
 
     respond_to do |format|
-      if @item.save
+      if (@item.restaurantId != current_user.try(:restaurantid)) && !current_user.try(:admin?)
+          format.html { redirect_to restaurant_path(:id => current_user.try(:restaurantid)), alert: 'There was an error saving your item.' }
+          format.json { render :show, status: :unprocessable_entity, location: @submenu }
+      elsif @item.save
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
@@ -58,7 +61,7 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     respond_to do |format|
-      format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
+      format.html { redirect_to items_url, notice: 'Item was successfully deleted.' }
       format.json { head :no_content }
     end
   end

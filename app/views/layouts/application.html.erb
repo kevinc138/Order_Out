@@ -24,7 +24,9 @@
             
             <li><%= link_to "Home", "http://localhost:3000/home/index" %></li>
             <% if current_user.try(:admin?) %>
-            	<li><%= link_to "Restaurant", "http://localhost:3000/restaurants" %></li>  
+            	<li><%= link_to "Restaurants", "http://localhost:3000/restaurants" %></li>  
+              <li><%= link_to "Submenus", "http://localhost:3000/submenus" %></li>
+              <li><%= link_to "Items", "http://localhost:3000/items" %></li>
             <% end %>
              
              

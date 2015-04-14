@@ -10,8 +10,10 @@
   <%= @submenu.restaurant %>
 </p>
 
-<%= link_to 'Edit', edit_submenu_path(@submenu) %> |
-<%= link_to 'Back', submenus_path %>
+<% if (current_user.try(:restaurantid) == @submenu.restaurantId) || current_user.try(:admin?) %>
+  <%= link_to 'Edit', edit_submenu_path(@submenu) %> |
+  <%= link_to 'Back', restaurant_path(@submenu.restaurantId) %>
+<% end %>
 
 <table class="table table-hover">
   <thead>
@@ -27,11 +29,18 @@
     <tr>
       <td><%=item.name%></td>
       <td><%=item.price%>
-      <td><%= link_to 'Delete', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      
+      <% if (current_user.try(:restaurantid) == @submenu.restaurantId) || current_user.try(:admin?) %>
+          <td><%= link_to 'Edit', edit_item_path(item), :class => "btn btn-default btn-sm" %></td>
+          <td><%= link_to 'Delete', item, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-default btn-sm" %></td>
+      <% end %>
+
     </tr>
 
   <% end %>
 
   </tbody>
 </table>
-<%= link_to '+ Add New', new_item_path(:submenuId => @submenu.id, :restaurantId => @submenu.restaurantId) %>
+<% if (current_user.try(:restaurantid) == @submenu.restaurantId) || current_user.try(:admin?) %>
+  <%= link_to '+ Add New Item', new_item_path(:submenuId => @submenu.id, :restaurantId => @submenu.restaurantId), :class => "btn btn-default btn-sm"  %>
+<% end %>
