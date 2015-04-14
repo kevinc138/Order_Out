@@ -7,17 +7,7 @@
 
 <p>
   <strong>Price:</strong>
-  <%= @item.price %>
-</p>
-
-<p>
-  <strong>Submenuid:</strong>
-  <%= @item.submenuId %>
-</p>
-
-<p>
-  <strong>Restaurantid:</strong>
-  <%= @item.restaurantId %>
+  <%= number_to_currency(@item.price) %>
 </p>
 
 <%= link_to 'Edit', edit_item_path(@item) %> |

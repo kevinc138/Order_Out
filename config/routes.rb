@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  
   resources :items
 
   resources :submenus
 
+  get 'store/view_cart'
   get 'home/index'
 
   resources :restaurants
