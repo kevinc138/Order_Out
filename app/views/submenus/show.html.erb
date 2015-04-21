@@ -29,7 +29,7 @@
   <% Item.where(submenuId:@submenu.id).find_each do |item| %>
     <tr>
       <td><%=item.name%></td>
-      <td><%=number_to_currency(item.price)%>
+      <td><%=number_to_currency(item.price)%><%= button_to 'Add to Cart', :controller => :home, :action => 'add_to_cart', :id => item.id%>
       
       <% if (current_user.try(:restaurantid) == @submenu.restaurantId) || current_user.try(:admin?) %>
           <td><%= link_to 'Edit', edit_item_path(item), :class => "btn btn-default btn-sm" %></td>

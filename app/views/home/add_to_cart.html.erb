@@ -1,0 +1,19 @@
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Price</th>
+    <th>Quantity</th>
+
+  </tr>
+<h3>My Cart</h3>
+<% @cart.items.each do |product| %>
+  <tr>
+    <td font-weight:bold><%= product.name %></td>
+    <td><%= number_to_currency(product.price) %></td>
+	<td><%= product.quantity %></td>
+  </tr>
+<% end %>
+</table>
+<h5> Total Price: <%= number_to_currency(@cart.total_price) %> </h5>
+	<%= button_to 'Empty Cart',  :action => 'empty_cart'%>
+	<%= button_to 'Return to Store', :action => :index %>

@@ -5,7 +5,7 @@ class Cart
 		@items = []
 	end
 	
-	def add_product(prod)
+	def add_item(prod)
 		#kartItem = @items.find {|item| item.product == prod}
 		#if kartItem
 		#	kartItem.increment_quantity

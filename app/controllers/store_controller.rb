@@ -1,6 +1,6 @@
 class StoreController < ApplicationController
   def index
-  
+  	@items = Item.all
   end
 
   def view_cart
@@ -8,7 +8,7 @@ class StoreController < ApplicationController
   end
 
   def add_to_cart
-  	item = Item.new
+  	item = Item.find(params[:id])
   	@cart = find_cart
   	@cart.add_item(item)
   end

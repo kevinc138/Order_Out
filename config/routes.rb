@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   root 'home#index'
   
   devise_for :users
+  post 'home/add_to_cart'
+  post 'home/empty_cart'
+  get 'home/view_cart'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
